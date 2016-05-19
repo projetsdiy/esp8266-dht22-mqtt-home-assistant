@@ -79,5 +79,5 @@ switch:
   optimistic: true      
   qos: 0
 </pre>  
-
+<img align="center" src="esp8266-dht22-mqtt-home-assistant/mqtt+home-assistant.png">
 J'espère que ce petit projet vous sera utile pour débuter en domotique. 
