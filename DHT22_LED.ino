@@ -1,4 +1,10 @@
-
+/*
+  Projet d'apprentissage d'un objet connecté (IoT)  pour réaliser une sonde de température
+  ESP8266 + DHT22 + LED + MQTT + Home-Assistant
+  Projets DIY (http://www.projetsdiy.fr) - Mai 2016
+  Article du projet : http://www.projetsdiy.fr/esp8266-dht22-mqtt-projet-objet-connecte/
+  Licence : MIT
+*/
 #include <ESP8266WiFi.h>
 #include <PubSubClient.h>
 #include "DHT.h"          // Librairie des capteurs DHT
