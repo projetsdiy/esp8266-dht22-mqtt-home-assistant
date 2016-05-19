@@ -19,12 +19,65 @@ Pour recevoir les mesures de votre objets et piloter la led, vous aurez besoin d
 - Un serveur domotique. Si vous débutez, Home-Assistant est très simple à installer et à utiliser même si l'anglais n'est pas votre fort (http://www.projetsdiy.fr/home-assistant-serveur-domotique-raspberry-pi/). 
 
 <h2>Branchement</h2>
+<img align="center" src="esp8266-dht22-mqtt-home-assistant/branchement esp8266+led+dht22.jpg" style="max-width:100%;">
 
 <h2>Code</h2>
-Le code du projet se trouve
+Téléchargez et ouvrez le fichier DTH22_LED.ino avec l'IDE Arduino
+Si vous découvrez les modules ESP8266, lisez cet article qui explique comment les programmer avec l'IDE Arduino http://www.projetsdiy.fr/esp-01-esp8266-flasher-firmware-origine/
+
+<h2>Installer Home-Assistant</h2>
+Python 3 (ou supérieur) doit être présent sur votre ordinateur
+puis 
+<pre>pip3 install homeassistant</pre>
+
+Pour les utilisateurs de Windows 10 (ou 7)
+<pre>python -m pip install homeassistant</pre>
 
 <h2>Intégration MQTT + Home-Assistant</h2>
-<img align="center" src="" style="max-width:100%;">
+Allez dans le répertroire d'installation d'Home-Assistant
+<pre>cd ~/.homeassistant</pre>
+puis 
+<pre>sudo nano configuration.yaml </pre>
+Ajoutez une section mqtt
+<pre>
+mqtt:
+  broker: localhost          
+  port: 1883                 #par défaut
+  client_id: home-assistant-1
+  keepalive: 60
+  username: USERNAME  #optionnel
+  password: PASSWORD   #optionnel
+  protocol: 3.1              #par défaut
+</pre>  
 
+et maintenant deux sensors (température et humidité)
+<pre>
+sensor:
+  platform: mqtt
+  state_topic: "sensor/temperature"
+  name: "Température"
+  qos: 0
+  unit_of_measurement: "°C"
+  #value_template: '{{ payload }}'
 
+sensor 2:
+  platform: mqtt
+  state_topic: "sensor/humidity"
+  name: "Humidité"
+  qos: 0
+  unit_of_measurement: "°C"
+  #value_template: '{{ payload }}'
+</pre>  
+et enfin un switch pour piloter la Led
+<pre>
+switch:
+  platform: mqtt
+  name: "Cuisine"
+  command_topic: "homeassistant/switch1" #Topic sur lequel on publie l'état de l'interrupteur
+  payload_on: "ON"      # ON pour allumer
+  payload_off: "OFF"    # et OFF pour éteindre (à vous de choisir)
+  optimistic: true      
+  qos: 0
+</pre>  
 
+J'espère que ce petit projet vous sera utile pour débuter en domotique. 
