@@ -22,7 +22,7 @@
 //Buffer qui permet de décoder les messages MQTT reçus
 char message_buff[100];
 
-long lastMsg = 0;   //Horodatahe du dernier message publié sur MQTT
+long lastMsg = 0;   //Horodatage du dernier message publié sur MQTT
 long lastRecu = 0;
 bool debug = false;  //Affiche sur la console si True
 
