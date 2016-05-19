@@ -19,7 +19,7 @@ Pour recevoir les mesures de votre objets et piloter la led, vous aurez besoin d
 - Un serveur domotique. Si vous débutez, Home-Assistant est très simple à installer et à utiliser même si l'anglais n'est pas votre fort (http://www.projetsdiy.fr/home-assistant-serveur-domotique-raspberry-pi/). 
 
 <h2>Branchement</h2>
-<img align="center" src="esp8266-dht22-mqtt-home-assistant/branchement esp8266+led+dht22.jpg" style="max-width:100%;">
+<img align="center" src="https://github.com/projetsdiy/esp8266-dht22-mqtt-home-assistant/blob/master/branchement%20esp8266%2Bled%2Bdht22.jpg" style="max-width:100%;">
 
 <h2>Code</h2>
 Téléchargez et ouvrez le fichier DTH22_LED.ino avec l'IDE Arduino
@@ -79,5 +79,10 @@ switch:
   optimistic: true      
   qos: 0
 </pre>  
-<img align="center" src="esp8266-dht22-mqtt-home-assistant/mqtt+home-assistant.png">
+<br>
+Rechargez la page d'Home-Assistant. Vous avez maintenant deux indicateurs (température et humidité) ainsi qu'un switch pour allumer / éteindre la Led
+
+<img align="center" src="https://github.com/projetsdiy/esp8266-dht22-mqtt-home-assistant/blob/master/mqtt+home-assistant.png" style="max-width:100%;">
+
+<bre>
 J'espère que ce petit projet vous sera utile pour débuter en domotique. 
